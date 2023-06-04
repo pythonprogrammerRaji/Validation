@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assests/css/style.css">
+</head>
+<body>
+    <section>
+        <div>
+            <form name="form" id="form" autocomplete="off" >
+                <h2>Content Form</h2>
+                <div class="initial">
+                    <label for="name">Full Name</label>
+                    <br>
+                    <input type="text" name="fullName" id="fullName" onkeyup="validate0()">
+                    <strong id="status"></strong>
+                </div>
+                <br>
+                
+                <div class="initial">
+                    <label for="email">Email id</label>
+                    <br>
+                    <input type="text" name="email" id="email" onkeyup="validate1()">
+                    <strong id="status1"></strong>
+                </div>
+                <br>
+                
+                <div class="initial">
+                    <label for="mobile number">Mobile Number</label>
+                    <br>
+                    <input type="text" name="number" id="number" onkeyup="validate2()">
+                    <strong id="status2"></strong>
+                </div>
+                <br>
+                
+                <div class="initial">
+                    <label>City</label>
+                    <br>
+                    <select name="city" id="city" onkeyup="validate3()">
+                        <option value="" >Choose city name</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="Mysore">Mysore</option>
+                        <option value="DhavanaGere">Dhavanagere</option>
+                        <option value="Hassan">Hassan</option>
+                        <option value="Chikkamagalore">Chikkamagalore</option>
+                    </select>
+                    <strong id="status3"></strong>
+                </div>
+                <br>
+                    
+                <div class="gender" onkeyup="validate4()">
+                    <h4>Gender</h4>
+                    <br>
+                    <input type="radio" name="male" id="male">
+                    <label>Male</label>
+                    <input type="radio" name="female" id="female">
+                    <label>Female</label>
+                    
+                    <strong id="status4"></strong>
+                </div>
+                <br>
+                    
+                <div class="initials" id="Language" onkeyup="validate5()">
+                    <label>Language (optional)</label>
+                    <br>
+                    <input type="checkbox" value="Kannada" name="kannada" id="kannada">
+                    <label for="">Kannada</label>
+                    
+                    <input type="checkbox" value="English" name="english" id="english">
+                    <label for="">English</label>
+                    
+                    <input type="checkbox" value="Hindi" name="hindi" id="hindi">
+                    <label for="">Hindi</label>
+                    
+                    <input type="checkbox" value="tamil" name="tamil" id="tamil">
+                    <label for="">Tamil</label>
+                    
+                    <br>
+                    <input type="checkbox" value="telugu" name="telugu" id="telugu">
+                    <label class="paper">Telugu</label>
+
+                    <strong id="stauts5"></strong>
+                    
+                </div> 
+                <br> 
+                    
+                <div class="button">
+                    <button type="button" class="row1" onclick=" validate0(); validate1(); validate2(); validate3(); validate4();">Submit </button>
+                    <button type="reset" class="row2" onclick="reseter()">Reset</button>
+                </div>
+            </form>
+        
+        </div>
+    </section>
+ 
+    <script>
+        function validate0(){
+            let fullName = document.getElementById("fullName").value;
+            let status = document.getElementById("status");
+
+          let regax = /^[A-Za-z]+$/ 
+
+            if(fullName === "" ||fullName.length<6){
+                status.innerText = "Name field above 5 letters";
+                status.style.color = "orangered";
+
+            } else if(regax.test(fullName) === false){
+                status.innerText = "Enter only letters";
+                status.style.color = "red";
+
+            }
+            else{
+                status.innerText = " Your are  entered fullName ";
+                status.style.color = "green";
+            }
+        
+        }
+        function validate1(){
+            let email = document.getElementById("email").value;
+            let status1 = document.getElementById("status1");
+
+            let regax = /^\S+@\S+\.\S+$/;    
+
+            if(email == ""){
+                status1.innerText = "Email field cannot be empty";
+                status1.style.color = "orangered";
+
+            } else {
+            if(regax.test(email) === false){
+                status1.innerText = "Invalid Email-id";
+                status1.style.color = "orangered";
+            }
+            else{
+                status1.innerText = "Valid Email-id";
+                status1.style.color = "green";
+            }
+        }
+            
+        }
+        function validate2(){
+            let number = document.getElementById("number").value;
+            let status2 = document.getElementById("status2");
+
+            let regax = /^[3-9]\d{9}$/;
+
+            if(number === ""){
+                status2.innerText = 'Mobile field must be filled';
+                status2.style.color = 'orangered';
+            } else{
+                if(regax.test(number) === false){
+                status2.innerText = ' Invalid Indian Mobile number ';
+                status2.style.color = 'orangered';
+                }
+                else{
+                status2.innerText = ' Valid Indian Mobile number ';
+                status2.style.color = 'green';
+                }
+            }
+        }
+            function validate3(){
+            let city = document.getElementById("city").value;
+            let status3 = document.getElementById("status3");
+            
+            if(city==""){
+                status3.innerText = "Please select your city";
+                status3.style.color = "red"
+            } else{
+                status3.innerText = "Your are selected city";
+                status3.style.color = "green";
+            }
+        }
+            function validate4(){
+            
+            let male = document.getElementById("male");
+            let female = document.getElementById("female");
+            var status4 = document.getElementById("status4");
+
+            if(male.checked==false&&female.checked==false){
+                status4.innerHTML = "Please select any one";
+                status4.style.color = "red";
+                }
+            else{
+                status4.innerHTML = "your selected";
+                status4.style.color = "green";
+            }
+        }
+        function reseter(){
+            location.reload();
+        }
+        
+
+    </script>
+
+   
+</body>
+</html>
